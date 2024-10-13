@@ -3,55 +3,55 @@ import { Canvas } from "@react-three/fiber";
 import { PerspectiveCamera } from "@react-three/drei";
 import CyberPunk from "../components/CyberPunk.jsx";
 import CanvasLoader from "../components/CanvasLoader.jsx";
-import ReactLogo from "../components/ReactLogo.jsx"
-import Cube from "../components/Cube.jsx"
+// import ReactLogo from "../components/ReactLogo.jsx"
+// import Cube from "../components/Cube.jsx"
 import Button from "../components/Button.jsx"
-import Rings from '../components/Rings.jsx'
+// import Rings from '../components/Rings.jsx'
 import HeroCamera from "../components/HeroCamera.jsx";
 
 import { useMediaQuery } from "react-responsive";
 import { calculateSizes } from "../constants/index.js";
-import Target from "../components/Target.jsx";
+// import Target from "../components/Target.jsx";
 import { useControls,Leva } from 'leva'
 const Hero = () => {
 
-  const x=useControls("CyberPunk",{
-    positionX:{
-      value:2.5,
-      min:-10,
-      max:10
-    },
-    positionY:{
-      value:2.5,
-      min:-10,
-      max:10
-    },
-    positionZ:{
-      value:2.5,
-      min:-10,
-      max:10
-    },
-    rotationX:{
-      value:0,
-      min:-10,
-      max:10
-    },
-    rotationY:{
-      value:0,
-      min:-10,
-      max:10
-    },
-    rotationZ:{
-      value:0,
-      min:-10,
-      max:10
-    },
-    scale:{
-      value:1,
-      min:0.1,
-      max:10
-    }
-  })
+  // const x=useControls("CyberPunk",{
+  //   positionX:{
+  //     value:2.5,
+  //     min:-10,
+  //     max:10
+  //   },
+  //   positionY:{
+  //     value:2.5,
+  //     min:-10,
+  //     max:10
+  //   },
+  //   positionZ:{
+  //     value:2.5,
+  //     min:-10,
+  //     max:10
+  //   },
+  //   rotationX:{
+  //     value:0,
+  //     min:-10,
+  //     max:10
+  //   },
+  //   rotationY:{
+  //     value:0,
+  //     min:-10,
+  //     max:10
+  //   },
+  //   rotationZ:{
+  //     value:0,
+  //     min:-10,
+  //     max:10
+  //   },
+  //   scale:{
+  //     value:1,
+  //     min:0.1,
+  //     max:10
+  //   }
+  // })
 
   const isSmall = useMediaQuery({ maxWidth: 440 })
   const isMobile = useMediaQuery({ maxWidth: 768 })
@@ -64,25 +64,25 @@ const Hero = () => {
       
 
       <div className="w-full h-full absolute insert-0">
-        <Leva />
+        {/* <Leva /> */}
         <Canvas className="w-full h-full">
           <Suspense fallback={<CanvasLoader />}>
             <PerspectiveCamera makeDefault position={[0, 0, 20]} />
             <HeroCamera isMobile={isMobile}>
               <CyberPunk
-                position={[x.positionX,x.positionY,x.positionZ]}
-                rotation={[x.rotationX,x.rotationY,x.rotationZ]}
-                scale={[x.scale,x.scale,x.scale]}
+                position={[0.3,-6.5,2.5]}
+                rotation={[0,0,0]}
+                scale={[6,6,6]}
               />
             </HeroCamera>
 
 
-            <group>
+            {/* <group>
               <Target position={sizes.targetPosition} />
               <ReactLogo position={sizes.reactLogoPosition} />
               <Cube position={sizes.cubePosition} />
               <Rings position={sizes.ringPosition} />
-            </group>
+            </group> */}
             <ambientLight intensity={1} />
             <directionalLight position={[10, 10, 10]} intensity={0.5} />
           </Suspense>
@@ -93,8 +93,8 @@ const Hero = () => {
         <p className="sm:text-3xl text-2xl font-bold text-white text-center">
           Hi I am Abel <span className="waving-hand">✋</span>
         </p>
-        <p className="hero_tag text-gray_gradient text-center">
-          Buildings Products & Brands
+        <p className="hero_tag text-slate-200 text-center">
+        Designing solutions and identities
         </p>
       </div>
       

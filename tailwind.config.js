@@ -5,6 +5,7 @@ export default {
     extend: {
       fontFamily: {
         generalsans: ['General Sans', 'sans-serif'],
+        SpicyRice:['Spicy Rice']
       },
       colors: {
         black: {
