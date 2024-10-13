@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import  { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { PerspectiveCamera } from "@react-three/drei";
 import CyberPunk from "../components/CyberPunk.jsx";
@@ -60,7 +60,7 @@ const Hero = () => {
   const sizes = calculateSizes(isSmall, isTablet, isMobile)
 
   return (
-    <section className="min-h-screen w-full flex flex-col relative ">
+    <section className="min-h-screen w-full flex flex-col relative">
       
 
       <div className="w-full h-full absolute insert-0">
