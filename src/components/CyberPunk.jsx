@@ -5,257 +5,254 @@ License: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
 Source: https://sketchfab.com/3d-models/cyberpunk-laptop-8330c89e8431451db3aa9d15c5836ddf
 Title: CyberPunk Laptop
 */
-
+import { useEffect } from 'react';
 import { useGLTF, useTexture } from "@react-three/drei";
-import * as THREE from 'three';
+
 
 const CyberPunk = (props) => {
-  const { nodes, materials } = useGLTF("models/cyberpunk_laptop.glb")
+  const { nodes, materials } = useGLTF("models/Abel.glb")
 
-  const screenTexture = useTexture('/textures/desk/screen.png');
-
-  console.log(screenTexture);
-
-    // Flip the texture on the Y axis if necessary
-    screenTexture.flipY = false;
-
-    // Set texture wrapping and repeat, adjust as needed
-    screenTexture.wrapS = screenTexture.wrapT = THREE.RepeatWrapping;
-    screenTexture.repeat.set(1, 1);
-
+  useEffect(() => {
+    const uvs = nodes.Object_24.geometry.attributes.uv.array;
+    for (let i = 0; i < uvs.length; i += 2) {
+      uvs[i + 1] = 1 - uvs[i + 1]; // Flip the Y coordinate
+    }
+    nodes.Object_24.geometry.attributes.uv.needsUpdate = true; // Notify Three.js that the UVs have been updated
+  }, [nodes.Object_24.geometry]);
+  
   return (
     <group {...props} dispose={null}>
-    <group position={[0, 0.096, -0.728]} rotation={[-1.735, 0, 0]}>
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Object_19.geometry}
-        material={materials['Material.012']}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Object_20.geometry}
-        material={materials['Material.008']}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Object_21.geometry}
-        material={materials['Material.009']}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Object_22.geometry}
-        material={materials['Material.001']}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Object_23.geometry}
-        material={materials['Material.018']}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Object_24.geometry}
-        // scale={[15, 15, 15]}
-        // material={materials['Material.019']}
-      >
-        <meshBasicMaterial map={screenTexture}/>
+      <group position={[0, 0.096, -0.728]} rotation={[-1.735, 0, 0]}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_19.geometry}
+          material={materials['Material.012']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_20.geometry}
+          material={materials['Material.008']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_21.geometry}
+          material={materials['Material.009']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_22.geometry}
+          material={materials['Material.001']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_23.geometry}
+          material={materials['Material.018']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_24.geometry}
+          material={materials['Material.019']}
+        >
         </mesh>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_25.geometry}
+          material={materials['Material.020']}
+        >
+          {/* <meshBasicMaterial map={screenTexture} wireframe /> */}
+        </mesh>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_26.geometry}
+          material={materials['Material.014']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_27.geometry}
+          material={materials['Material.015']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_28.geometry}
+          material={materials['Material.021']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_29.geometry}
+          material={materials['Material.022']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_30.geometry}
+          material={materials['Material.023']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_31.geometry}
+          material={materials['Material.028']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_32.geometry}
+          material={materials['Material.030']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_33.geometry}
+          material={materials['Material.034']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_34.geometry}
+          material={materials['Material.032']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_35.geometry}
+          material={materials['Material.033']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_36.geometry}
+          material={materials['Material.035']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_37.geometry}
+          material={materials['Material.004']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_38.geometry}
+          material={materials['Material.007']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_39.geometry}
+          material={materials['Material.006']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_40.geometry}
+          material={materials['Material.005']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object_41.geometry}
+          material={materials['Material.013']}
+        />
+      </group>
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Object_25.geometry}
-        material={materials['Material.020']}
+        geometry={nodes.Object_4.geometry}
+        material={materials['Material.017']}
       />
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Object_26.geometry}
-        material={materials['Material.014']}
+        geometry={nodes.Object_5.geometry}
+        material={materials['Material.025']}
       />
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Object_27.geometry}
-        material={materials['Material.015']}
+        geometry={nodes.Object_6.geometry}
+        material={materials['Material.002']}
       />
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Object_28.geometry}
-        material={materials['Material.021']}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Object_29.geometry}
-        material={materials['Material.022']}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Object_30.geometry}
-        material={materials['Material.023']}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Object_31.geometry}
+        geometry={nodes.Object_7.geometry}
         material={materials['Material.028']}
       />
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Object_32.geometry}
-        material={materials['Material.030']}
+        geometry={nodes.Object_8.geometry}
+        material={materials['Material.027']}
       />
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Object_33.geometry}
-        material={materials['Material.034']}
+        geometry={nodes.Object_9.geometry}
+        material={materials['Material.029']}
       />
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Object_34.geometry}
-        material={materials['Material.032']}
+        geometry={nodes.Object_10.geometry}
+        material={materials['Material.031']}
       />
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Object_35.geometry}
-        material={materials['Material.033']}
+        geometry={nodes.Object_11.geometry}
+        material={materials['Material.008']}
       />
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Object_36.geometry}
-        material={materials['Material.035']}
+        geometry={nodes.Object_12.geometry}
+        material={materials['Material.009']}
       />
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Object_37.geometry}
-        material={materials['Material.004']}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Object_38.geometry}
-        material={materials['Material.007']}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Object_39.geometry}
-        material={materials['Material.006']}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Object_40.geometry}
-        material={materials['Material.005']}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Object_41.geometry}
+        geometry={nodes.Object_13.geometry}
         material={materials['Material.013']}
       />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Object_14.geometry}
+        material={materials['Material.038']}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Object_15.geometry}
+        material={materials['Material.036']}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Object_16.geometry}
+        material={materials['Material.039']}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Object_17.geometry}
+        material={materials['Material.040']}
+      />
     </group>
-    <mesh
-      castShadow
-      receiveShadow
-      geometry={nodes.Object_4.geometry}
-      material={materials['Material.017']}
-    />
-    <mesh
-      castShadow
-      receiveShadow
-      geometry={nodes.Object_5.geometry}
-      material={materials['Material.025']}
-    />
-    <mesh
-      castShadow
-      receiveShadow
-      geometry={nodes.Object_6.geometry}
-      material={materials['Material.002']}
-    />
-    <mesh
-      castShadow
-      receiveShadow
-      geometry={nodes.Object_7.geometry}
-      material={materials['Material.028']}
-    />
-    <mesh
-      castShadow
-      receiveShadow
-      geometry={nodes.Object_8.geometry}
-      material={materials['Material.027']}
-    />
-    <mesh
-      castShadow
-      receiveShadow
-      geometry={nodes.Object_9.geometry}
-      material={materials['Material.029']}
-    />
-    <mesh
-      castShadow
-      receiveShadow
-      geometry={nodes.Object_10.geometry}
-      material={materials['Material.031']}
-    />
-    <mesh
-      castShadow
-      receiveShadow
-      geometry={nodes.Object_11.geometry}
-      material={materials['Material.008']}
-    />
-    <mesh
-      castShadow
-      receiveShadow
-      geometry={nodes.Object_12.geometry}
-      material={materials['Material.009']}
-    />
-    <mesh
-      castShadow
-      receiveShadow
-      geometry={nodes.Object_13.geometry}
-      material={materials['Material.013']}
-    />
-    <mesh
-      castShadow
-      receiveShadow
-      geometry={nodes.Object_14.geometry}
-      material={materials['Material.038']}
-    />
-    <mesh
-      castShadow
-      receiveShadow
-      geometry={nodes.Object_15.geometry}
-      material={materials['Material.036']}
-    />
-    <mesh
-      castShadow
-      receiveShadow
-      geometry={nodes.Object_16.geometry}
-      material={materials['Material.039']}
-    />
-    <mesh
-      castShadow
-      receiveShadow
-      geometry={nodes.Object_17.geometry}
-      material={materials['Material.040']}
-    />
-  </group>
   );
 };
 
-useGLTF.preload("models/cyberpunk_laptop.glb");
+useGLTF.preload("Abel.glb");
 
 export default CyberPunk;

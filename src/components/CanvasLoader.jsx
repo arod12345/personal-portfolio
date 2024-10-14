@@ -1,32 +1,38 @@
-import { Html, useProgress } from "@react-three/drei";
+import React, { useEffect, useState } from 'react';
 
-const CanvasLoader = () => {
-  const { progress } = useProgress();
+const CanvasLoader = ({ loading }) => {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    if (loading) {
+      const interval = setInterval(() => {
+        setProgress((prev) => {
+          if (prev >= 100) {
+            clearInterval(interval);
+            return 100;
+          }
+          return Math.min(prev + 10, 100); // Increment progress
+        });
+      }, 500); // Change interval duration as needed
+
+      return () => clearInterval(interval);
+    } else {
+      setProgress(0); // Reset progress when loading is false
+    }
+  }, [loading]);
 
   return (
-    <Html
-      as="div"
-      center
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "column"
-      }}
+    <div
+      className={`fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-8 border border-gray-300 rounded overflow-hidden bg-gray-100 flex flex-col items-center justify-center transition-opacity duration-300 ${
+        loading ? 'opacity-100' : 'opacity-0 pointer-events-none'
+      }`}
     >
-      <span className="canvas-loader" />
-      <p
-        style={{
-          fontSize: 14,
-          color: "#F1F1F1",
-          fontWeight: 700,
-          marginTop: 40
-        }}
-      >
-        {(progress != 0 ? `${progress.toFixed(2)}%` : `Loading...`)}
-      </p>
-      canvas
-    </Html>
+      <div
+        className="h-full bg-green-500 transition-all duration-500"
+        style={{ width: `${progress}%` }}
+      />
+      <div className="mt-1 font-bold">{progress}%</div>
+    </div>
   );
 };
 
